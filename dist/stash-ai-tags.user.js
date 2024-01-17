@@ -11,8 +11,8 @@
 // @connect     localhost
 // @run-at      document-idle
 // @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
-// @downloadURL https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/stashtag.user.js
-// @updateURL   https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/stashtag.user.js
+// @downloadURL https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/stash-ai-tags.user.js
+// @updateURL   https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/stash-ai-tags.user.js
 // @grant       GM_addStyle
 // @grant       GM_getResourceText
 // @grant       GM_xmlhttpRequest
