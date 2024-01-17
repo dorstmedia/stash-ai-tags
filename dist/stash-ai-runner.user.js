@@ -229,54 +229,55 @@
 
             //console.log("AllTags",tags);
             // Iterate over each element and perform actions
-            for (let i = 0; i < previewElements.length; i++) {
-                console.log('another loop');
-                console.log("Wait before opening Scene");
-                await sleep(1000);
-                // Click on the element
-                previewElements[i].click();
+            let i = 0
+            //for (let i = 0; i < previewElements.length; i++) {
+            console.log('another loop');
+            console.log("Wait before opening Scene");
+            await sleep(1000);
+            // Click on the element
+            previewElements[i].click();
 
-                //Wait for Scene Page to load
-                var scrubberWrapper = await waitForElm('.scrubber-wrapper');
-                await sleep(500);
-                //if(document.getElementsByClassName("scrubber-item").length > 0){
-                let [,scene_id] = getScenarioAndID();
-                let existingTags = await getTagsForScene(scene_id);
-                //console.log("existingTags",existingTags);
-                let sprites = await getUrlSprite(scene_id);
+            //Wait for Scene Page to load
+            var scrubberWrapper = await waitForElm('.scrubber-wrapper');
+            await sleep(500);
+            //if(document.getElementsByClassName("scrubber-item").length > 0){
+            let [,scene_id] = getScenarioAndID();
+            let existingTags = await getTagsForScene(scene_id);
+            //console.log("existingTags",existingTags);
+            let sprites = await getUrlSprite(scene_id);
 
-                if (!sprites) {
-                    console.log("No sprite found, please ensure you have sprites enabled and generated for your scenes.");
-                    if (typeof tags == 'undefined'){
-                        let tags = await getAllTags();
-                    }
-                    if (typeof tags["stash_missing_sprites"] == 'undefined') tags["stash_missing_sprites"] = await createTag("STASH_MISSING_SPRITES");
-                    let existingTags = await getTagsForScene(scene_id);
-                    if (typeof tags["stash_missing_sprites"] != 'undefined' && !existingTags.includes(tags["stash_missing_sprites"])) existingTags.push(tags["stash_missing_sprites"]);
-                    await updateScene(scene_id, existingTags);
-                }else{
-                    //Run AI tagger
-                    if (!existingTags.includes(tags["stash_ai_tags"])) await ai_get("stashtag",'tags-accept',200,200,100);
-                    //Run AI marker
-                    if (!existingTags.includes(tags["stash_ai_markers"])) await ai_get("stashmarker",'markers-accept',200,200,100);
+
+            if (!sprites) {
+                console.log("No sprite found, please ensure you have sprites enabled and generated for your scenes.");
+                if (typeof tags == 'undefined'){
+                    let tags = await getAllTags();
                 }
-		await sleep(500);
-                console.log('sleep ended')
-                // Navigate back in browsing history
-                console.log('lets go back');
-                window.history.back();
-                // Refresh the list of items after going back
-                console.log('Wait for scenes overview to load');
-
-                await waitForElmHide('.scrubber-wrapper');
-                console.log('Refresh the list of items after going back');
-                await waitForElm('.preview-scrubber');
-                await sleep(500);
-                previewElements = document.querySelectorAll('.preview-scrubber');
-                if(previewElements.length < 1) window.location.hash='';
-                window.location.reload();
+                let existingTags = await getTagsForScene(scene_id);
+                if (typeof tags["stash_missing_sprites"] != 'undefined' && !existingTags.includes(tags["stash_missing_sprites"])) existingTags.push(tags["stash_missing_sprites"]);
+                await updateScene(scene_id, existingTags);
+            }else{
+                //Run AI tagger
+                if (!existingTags.includes(tags["stash_ai_tags"])) await ai_get("stashtag",'tags-accept',200,200,100);
+                //Run AI marker
+                if (!existingTags.includes(tags["stash_ai_markers"])) await ai_get("stashmarker",'markers-accept',200,200,100);
             }
+            await sleep(500);
+            console.log('sleep ended')
+            // Navigate back in browsing history
+            console.log('lets go back');
+            window.history.back();
+            // Refresh the list of items after going back
+            console.log('Wait for scenes overview to load');
+
+            await waitForElmHide('.scrubber-wrapper');
+            console.log('Refresh the list of items after going back');
+            await waitForElm('.preview-scrubber');
+            await sleep(500);
+            previewElements = document.querySelectorAll('.preview-scrubber');
+            if(previewElements.length < 1) window.location.hash='';
+            window.location.reload();
         }
+        //}
     }
     function AiTagsBtn(btnId){
         //// Call the main function
