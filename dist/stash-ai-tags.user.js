@@ -3,10 +3,10 @@
 // @description Find tags for a scene
 // @icon        https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/_media/stashapp-favicon.ico
 // @namespace   https://github.com/dorstmedia/stash-ai-tags
-// @version     0.1.3.1.1
+// @version     0.1.3.1.2
 // @homepage    https://github.com/dorstmedia/stash-ai-tags/blob/main/dist/stash-ai-tags.user.js
 // @author      dorstmedia (forked from cc12344567)
-// @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/bundle.css
+// @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/bundle.tags.css
 // @match       http://localhost:9999/*
 // @exclude     http://localhost:9999/settings?tab=logs
 // @connect     hf.space
