@@ -1,18 +1,18 @@
 // ==UserScript==
-// @name        stashtag
+// @name        stash-ai-tags
 // @description Find tags for a scene
-// @namespace   https://github.com/cc1234475
+// @namespace   https://github.com/dorstmedia
 // @version     0.1.3
-// @homepage    https://github.com/cc1234475/stashtag
-// @author      cc12344567
-// @resource    css https://raw.githubusercontent.com/cc1234475/stashtag/main/dist/bundle.css
+// @homepage    https://github.com/dorstmedia/stash-ai-tags
+// @author      dorstmedia (forked from cc12344567)
+// @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/bundle.css
 // @match       http://localhost:9999/*
 // @connect     hf.space
 // @connect     localhost
 // @run-at      document-idle
 // @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
-// @downloadURL https://raw.githubusercontent.com/cc1234475/stashtag/main/dist/stashtag.user.js
-// @updateURL   https://raw.githubusercontent.com/cc1234475/stashtag/main/dist/stashtag.user.js
+// @downloadURL https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/stashtag.user.js
+// @updateURL   https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/stashtag.user.js
 // @grant       GM_addStyle
 // @grant       GM_getResourceText
 // @grant       GM_xmlhttpRequest
