@@ -3,7 +3,7 @@
 // @description Generate markers for a scene
 // @icon        https://docs.stashapp.cc/favicon.ico
 // @namespace   https://github.com/dorstmedia
-// @version     0.2.1
+// @version     0.2.1.1
 // @homepage    https://github.com/dorstmedia/stash-ai-tags
 // @author      dorstmedia (forked from cc12344567)
 // @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/bundle.css
