@@ -3,7 +3,7 @@
 // @description Find tags for a scene
 // @icon        https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/_media/stashapp-favicon.ico
 // @namespace   https://github.com/dorstmedia/stash-ai-tags
-// @version     0.1.1.2
+// @version     0.1.1.3
 // @homepage    https://github.com/dorstmedia/stash-ai-tags/blob/main/dist/stash-ai-runner.user.js
 // @author      dorstmedia (forked from cc12344567)
 // @match       http://localhost:9999/*
@@ -230,10 +230,9 @@
             //console.log("AllTags",tags);
             // Iterate over each element and perform actions
             let i = 0
-            //for (let i = 0; i < previewElements.length; i++) {
             console.log('another loop');
             console.log("Wait before opening Scene");
-            await sleep(1000);
+            await sleep(500);
             // Click on the element
             previewElements[i].click();
 
@@ -277,7 +276,7 @@
             if(previewElements.length < 1) window.location.hash='';
             window.location.reload();
         }
-        //}
+        
     }
     function AiTagsBtn(btnId){
         //// Call the main function
