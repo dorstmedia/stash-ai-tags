@@ -243,13 +243,13 @@
             let i = 0
             console.log('another loop');
             console.log("Wait before opening Scene");
-            await sleep(500);
+            await sleep(100);
             // Click on the element
             previewElements[i].click();
 
             //Wait for Scene Page to load
             var scrubberWrapper = await waitForElm('.scrubber-wrapper');
-            await sleep(500);
+            await sleep(100);
             //if(document.getElementsByClassName("scrubber-item").length > 0){
             let [,scene_id] = getScenarioAndID();
             
@@ -264,7 +264,6 @@
                 if (typeof tags["stash_missing_sprites"] != 'undefined' && !existingTags.includes(tags["stash_missing_sprites"])) existingTags.push(tags["stash_missing_sprites"]);
                 await updateScene(scene_id, existingTags);
             }else{
-                await sleep(500);
                 //Run AI tagger
                 var clicked=false;
 
@@ -273,7 +272,7 @@
                         document.getElementById("stashtag").click();
                         document.getElementById("stashmarker").click();
                         clicked=true;
-                        await sleep(500);
+                        await sleep(100);
                     }
                 }
                 if ((ai_runner_type=="tags,markers" || ai_runner_type=="tags") && document.getElementById("stashtag") && !existingTags.includes(tags["stash_ai_tags"])){
@@ -293,7 +292,7 @@
                     }
                 }
             }
-            await sleep(500);
+            await sleep(200);
             console.log('sleep ended')
             // Navigate back in browsing history
             console.log('lets go back');
@@ -304,7 +303,7 @@
             await waitForElmHide('.scrubber-wrapper');
             console.log('Refresh the list of items after going back');
             await waitForElm('.preview-scrubber');
-            await sleep(500);
+            await sleep(200);
             previewElements = document.querySelectorAll('.preview-scrubber');
             if(previewElements.length < 1) window.location.hash='';
             window.location.reload();
