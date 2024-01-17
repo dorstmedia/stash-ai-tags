@@ -7,6 +7,7 @@
 // @homepage    https://github.com/dorstmedia/stash-ai-tags
 // @author      dorstmedia (forked from cc12344567)
 // @match       http://localhost:9999/*
+// @exclude     http://localhost:9999/settings?tab=logs
 // @connect     localhost
 // @run-at      document-idle
 // @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
