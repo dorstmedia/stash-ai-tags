@@ -211,9 +211,9 @@
         await sleep(waitAfter);
 
     }
-    async function ai_tag_runner_start(tagsThreshold,markersThreshold) {
+    async function ai_runner_start(tagsThreshold,markersThreshold) {
         //await sleep(3000);
-        console.log("ai_tag_runner_start");
+        console.log("ai_runner_start");
         // Get all elements with the "preview-scrubber" class
         changeTagsThreshold(tagsThreshold);
         changeMarkersThreshold(markersThreshold);
@@ -301,51 +301,27 @@
                 console.log("Failed to create AI Tag Button");
             }
         }
-        //}
-        /*
-	//document.querySelector(".navbar-buttons.navbar-nav").insertAdjacentHTML( 'afterbegin', '<a id="ai_tag_runner" href="#"><button type="button" class="btn btn-primary btn-sm" id="ai_tag_runner">AI Tags</button></a>' );
-
-	//var first_a_in_nav = document.querySelector(".navbar-buttons.navbar-nav > a")[0];
-	//first_a_in_nav.insertAdjacentHTML("beforebegin",'<a id="ai_tag_runner" class="btn btn-primary btn-sm" id="ai_tag_runner" href="#">AI Tags</a>');
-
-
-	//document.querySelectorAll(".navbar-buttons.navbar-nav")[0];
-
-	//document.querySelector(".navbar-buttons.navbar-nav a.nav-utility").href="#";
-	//var donate_btn = document.querySelector(".navbar-buttons.navbar-nav a.nav-utility");
-	//donate_btn.innerHTML='<button type="button" class="btn btn-primary btn-sm" id="ai_tag_runner">AI Tags</button>';
-	//donate_btn.onclick=ai_tag_runner_start;
-	//document.querySelector(".navbar-buttons.navbar-nav .btn").classList.add("btn-sm");
-	*/
     }
-    /*
-// Function to wait for the page to finish loading
-async function waitForPageLoad() {
-    return new Promise(resolve => {
-        window.addEventListener('load', resolve);
-    });
-}
-*/
 
-  const { stash } = unsafeWindow.stash;
-  stash.addEventListener("page:scenes", function () {
-      waitForElm(".preview-scrubber").then(() => {
-          if (!document.getElementById("ai_tag_runner")) {
-              AiTagsBtn("ai_tag_runner");
-              if(document.getElementById("ai_tag_runner")){
-                  console.log("window.location.hash",window.location.hash);
-                  if(window.location.hash=='#ai_runner'){
-                      ai_tag_runner_start(0.75,0.75);
-                  }
-                  document.getElementById("ai_tag_runner").addEventListener("click", (event) => {
-                      event.preventDefault();
-                      window.location.hash='ai_runner';
-                      ai_tag_runner_start(0.75,0.75);
-                  });
-              };
-          }
-      });
-  });
+    const { stash } = unsafeWindow.stash;
+    stash.addEventListener("page:scenes", function () {
+        waitForElm(".preview-scrubber").then(() => {
+            if (!document.getElementById("ai_tag_runner")) {
+                AiTagsBtn("ai_tag_runner");
+                if(document.getElementById("ai_tag_runner")){
+                    console.log("window.location.hash",window.location.hash);
+                    if(window.location.hash=='#ai_runner'){
+                        ai_runner_start(0.75,0.75);
+                    }
+                    document.getElementById("ai_tag_runner").addEventListener("click", (event) => {
+                        event.preventDefault();
+                        window.location.hash='ai_runner';
+                        ai_runner_start(0.75,0.75);
+                    });
+                };
+            }
+        });
+    });
 
 
 })();
