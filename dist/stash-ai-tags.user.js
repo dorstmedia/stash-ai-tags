@@ -24,7 +24,7 @@ GM_addStyle(GM_getResourceText('css'));
 (function () {
   'use strict';
 
-  const {stash: stash$1} = unsafeWindow.stash;
+  const { stash: stash$1 } = unsafeWindow.stash;
 
   let STASHTAG_API_URL = "https://cc1234-stashtag.hf.space/api/predict";
 
