@@ -8,6 +8,7 @@
 // @author      dorstmedia (forked from cc12344567)
 // @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/bundle.css
 // @match       http://localhost:9999/*
+// @exclude     http://localhost:9999/settings?tab=logs
 // @connect     hf.space
 // @connect     localhost
 // @run-at      document-idle
