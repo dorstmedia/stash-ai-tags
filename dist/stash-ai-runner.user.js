@@ -254,13 +254,13 @@
                     let existingTags = await getTagsForScene(scene_id);
                     if (typeof tags["stash_missing_sprites"] != 'undefined' && !existingTags.includes(tags["stash_missing_sprites"])) existingTags.push(tags["stash_missing_sprites"]);
                     await updateScene(scene_id, existingTags);
-                    await sleep(500);
                 }else{
                     //Run AI tagger
                     if (!existingTags.includes(tags["stash_ai_tags"])) await ai_get("stashtag",'tags-accept',200,200,100);
                     //Run AI marker
                     if (!existingTags.includes(tags["stash_ai_markers"])) await ai_get("stashmarker",'markers-accept',200,200,100);
                 }
+		await sleep(500);
                 console.log('sleep ended')
                 // Navigate back in browsing history
                 console.log('lets go back');
