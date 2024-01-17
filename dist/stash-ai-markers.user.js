@@ -2,7 +2,7 @@
 // @name        stash-ai-markers
 // @description Generate markers for a scene
 // @icon        https://docs.stashapp.cc/favicon.ico
-// @namespace   https://github.com/dorstmedia
+// @namespace   https://github.com/dorstmedia/stash-ai-tags
 // @version     0.2.1.2
 // @homepage    https://github.com/dorstmedia/stash-ai-tags/blob/main/dist/stash-ai-markers.user.js
 // @author      dorstmedia (forked from cc12344567)
