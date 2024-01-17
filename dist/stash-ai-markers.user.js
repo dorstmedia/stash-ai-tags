@@ -1,19 +1,19 @@
 // ==UserScript==
 // @name        stash-ai-markers
 // @description Generate markers for a scene
-// @icon          https://docs.stashapp.cc/favicon.ico
+// @icon        https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/_media/tag_logo.png
 // @namespace   https://github.com/dorstmedia
 // @version     0.2.1
 // @homepage    https://github.com/dorstmedia/stash-ai-markers
 // @author      dorstmedia (forked from cc12344567)
-// @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-markers/main/dist/bundle.css
+// @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/bundle.css
 // @match       http://localhost:9999/*
 // @connect     hf.space
 // @connect     localhost
 // @run-at      document-idle
 // @require     https://raw.githubusercontent.com/7dJx1qP/stash-userscripts/master/src/StashUserscriptLibrary.js
-// @downloadURL https://raw.githubusercontent.com/dorstmedia/stash-ai-markers/main/dist/stash-ai-markers.user.js
-// @updateURL   https://raw.githubusercontent.com/dorstmedia/stash-ai-markers/main/dist/stash-ai-markers.user.js
+// @downloadURL https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/stash-ai-markers.user.js
+// @updateURL   https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/stash-ai-markers.user.js
 // @grant       GM_addStyle
 // @grant       GM_getResourceText
 // @grant       GM_xmlhttpRequest
