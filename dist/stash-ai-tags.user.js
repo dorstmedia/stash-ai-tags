@@ -3,7 +3,7 @@
 // @description Find tags for a scene
 // @icon        https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/_media/stashapp-favicon.ico
 // @namespace   https://github.com/dorstmedia/stash-ai-tags
-// @version     0.1.3.1.2
+// @version     0.1.3.1.3
 // @homepage    https://github.com/dorstmedia/stash-ai-tags/blob/main/dist/stash-ai-tags.user.js
 // @author      dorstmedia (forked from cc12344567)
 // @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/bundle.tags.css
@@ -24,7 +24,7 @@ GM_addStyle(GM_getResourceText('css'));
 (function () {
   'use strict';
 
-  const { stash: stash$1 } = unsafeWindow.stash;
+  const {stash: stash$1} = unsafeWindow.stash;
 
   let STASHTAG_API_URL = "https://cc1234-stashtag.hf.space/api/predict";
 
@@ -1783,7 +1783,7 @@ GM_addStyle(GM_getResourceText('css'));
   	let filteredMatches;
   	let { matches = [] } = $$props;
   	let { url = "" } = $$props;
-  	let { threshold = 0.2 } = $$props;
+  	let { threshold = 0.7 } = $$props;
   	let visible = false;
   	let saving = false;
   	let modal;
@@ -1824,22 +1824,30 @@ GM_addStyle(GM_getResourceText('css'));
   		$$invalidate(3, saving = true);
   		const [,scene_id] = getScenarioAndID();
   		let existingTags = await getTagsForScene(scene_id);
+        if (typeof tags["stash_ai_tags"] == 'undefined' || tags["stash_ai_tags"] === undefined) {
+            tags["stash_ai_tags"] = await createTag("STASH_AI_TAGS");
+        }
+        if (!existingTags.includes(tags["stash_ai_tags"])){
+            for (const [tag] of filteredMatches) {
+                let tagLower = tag.toLowerCase();
 
-  		for (const [tag] of filteredMatches) {
-  			let tagLower = tag.toLowerCase();
+                // if tag doesn't exist, create it
+                //console.log(tags);
+                if (typeof tags[tagLower] == 'undefined' || tags[tagLower] === undefined) {
+                //if (tags[tagLower] === undefined) {
+                    existingTags.push(await createTag(tag));
+                } else if (!existingTags.includes(tags[tagLower])) {
+                    existingTags.push(tags[tagLower]);
+                }
+            }
+            if (typeof tags["stash_ai_tags"] != 'undefined') existingTags.push(tags["stash_ai_tags"]);
 
-  			// if tag doesn't exist, create it
-  			if (tags[tagLower] === undefined) {
-  				existingTags.push(await createTag(tag));
-  			} else if (!existingTags.includes(tags[tagLower])) {
-  				existingTags.push(tags[tagLower]);
-  			}
-  		}
-
-  		await updateScene(scene_id, existingTags);
-  		$$invalidate(3, saving = false);
+            //existingTags.push(await createTag("STASH_AI_TAGS"));
+        }
+        await updateScene(scene_id, existingTags);
+        $$invalidate(3, saving = false);
   		close();
-  		location.reload();
+  		//location.reload();
   	}
 
   	function changeThreshold() {
@@ -1896,7 +1904,7 @@ GM_addStyle(GM_getResourceText('css'));
   class Matches extends SvelteComponent {
   	constructor(options) {
   		super();
-  		init(this, options, instance$1, create_fragment$1, safe_not_equal, { matches: 10, url: 1, threshold: 0 });
+  		init(this, options, instance$1, create_fragment$1, safe_not_equal, { matches: 10, url: 1, threshold: 75 });
   	}
   }
 
@@ -1945,10 +1953,14 @@ GM_addStyle(GM_getResourceText('css'));
   		$$invalidate(0, scanner = true);
   		const [,scene_id] = getScenarioAndID();
   		let url = await getUrlSprite(scene_id);
-  		console.log(url);
 
   		if (!url) {
-  			alert("No sprite found, please ensure you have sprites enabled and generated for your scenes.");
+  			console.log("No sprite found, please ensure you have sprites enabled and generated for your scenes.");
+            let tags = await getAllTags();
+            if (typeof tags["stash_missing_sprites"] == 'undefined') tags["stash_missing_sprites"] = await createTag("STASH_MISSING_SPRITES");
+            let existingTags = await getTagsForScene(scene_id);
+            if (typeof tags["stash_missing_sprites"] != 'undefined' && !existingTags.includes(tags["stash_missing_sprites"])) existingTags.push(tags["stash_missing_sprites"]);
+            await updateScene(scene_id, existingTags);
   			$$invalidate(0, scanner = false);
   			return;
   		}
@@ -1986,7 +1998,7 @@ GM_addStyle(GM_getResourceText('css'));
   			onload(response) {
   				if (response.status !== 200) {
   					$$invalidate(0, scanner = false);
-  					alert("Something went wrong. It's likely a server issue, Please try again later.");
+  					console.log("Something went wrong. It's likely a server issue, Please try again later.");
   					return;
   				}
 
@@ -2000,7 +2012,7 @@ GM_addStyle(GM_getResourceText('css'));
   				$$invalidate(0, scanner = false);
 
   				if (data.data[0].length === 0) {
-  					alert("No tags found");
+  					console.log("No tags found");
   					return;
   				}
 
