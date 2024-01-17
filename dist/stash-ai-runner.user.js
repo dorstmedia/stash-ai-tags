@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        stash-ai-runner
 // @description Find tags for a scene
-// @icon          https://docs.stashapp.cc/favicon.ico
+// @icon        https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/_media/tag_logo.png
 // @namespace   https://github.com/dorstmedia
 // @version     0.1
 // @homepage    https://github.com/dorstmedia/stash-ai-tags
