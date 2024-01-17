@@ -4,7 +4,7 @@
 // @icon        https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/_media/tag_logo.png
 // @namespace   https://github.com/dorstmedia
 // @version     0.2.1
-// @homepage    https://github.com/dorstmedia/stash-ai-markers
+// @homepage    // @homepage    https://github.com/dorstmedia/stash-ai-tags
 // @author      dorstmedia (forked from cc12344567)
 // @resource    css https://raw.githubusercontent.com/dorstmedia/stash-ai-tags/main/dist/bundle.css
 // @match       http://localhost:9999/*
